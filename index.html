@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roots &amp; Routes — Indian Artisan Marketplace</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --saffron: #E07B39;
+    --saffron-light: #F5C69E;
+    --saffron-dark: #A0431A;
+    --teal: #1D6A6A;
+    --teal-light: #E0F0EF;
+    --teal-mid: #2E9B9B;
+    --cream: #FBF7F0;
+    --cream-dark: #F0E8D8;
+    --ink: #1A1208;
+    --ink-mid: #3D2E1A;
+    --gold: #C89A2E;
+    --gold-light: #F5E4A8;
+    --dusty-rose: #C45E6A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ========= NAV ========= */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 5vw;
+    background: rgba(26,18,8,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(224,123,74,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--ink);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--saffron); }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: #E07B4A; }
+
+  .nav-cta {
+    background: var(--saffron);
+    color: white !important;
+    padding: 0.5rem 1.3rem;
+    border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--saffron-dark) !important; color: white !important; }
+
+  /* ========= HERO ========= */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 5vw 4rem;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: -5%;
+    width: 60%;
+    height: 110%;
+    background: var(--cream-dark);
+    border-radius: 60% 40% 40% 60% / 50% 50% 50% 50%;
+    z-index: 0;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--gold-light);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--saffron);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--saffron);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover { background: var(--saffron-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--ink);
+    padding: 0.85rem 2rem;
+    border-radius: 100px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1.5px solid rgba(26,18,8,0.25);
+    transition: border-color 0.2s, color 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover { border-color: var(--saffron); color: var(--saffron); }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,154,46,0.25);
+  }
+
+  .hero-stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--saffron);
+    display: block;
+  }
+
+  .hero-stat-label {
+    font-size: 0.8rem;
+    color: var(--ink-mid);
+    font-weight: 400;
+  }
+
+  /* Hero Visual */
+  .hero-visual {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-cards-stack {
+    position: relative;
+    width: 340px;
+    height: 420px;
+  }
+
+  .product-card {
+    position: absolute;
+    background: white;
+    border-radius: 20px;
+    padding: 1.2rem;
+    box-shadow: 0 8px 32px rgba(26,18,8,0.10);
+    transition: transform 0.3s;
+  }
+
+  .product-card:nth-child(1) { width: 200px; top: 0; left: 0; transform: rotate(-5deg); }
+  .product-card:nth-child(2) { width: 220px; top: 60px; right: 0; transform: rotate(3deg); z-index: 2; }
+  .product-card:nth-child(3) { width: 190px; bottom: 0; left: 20px; transform: rotate(2deg); z-index: 1; }
+
+  .product-card:hover { transform: rotate(0deg) scale(1.03); z-index: 10; }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.8rem;
+  }
+
+  .card-img.pottery { background: #F5E8D0; }
+  .card-img.textile { background: #E8F0E0; }
+  .card-img.jewelry { background: #F0E8F5; }
+
+  .card-name {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .card-state {
+    font-size: 0.7rem;
+    color: var(--teal-mid);
+    font-weight: 400;
+  }
+
+  .card-price {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--saffron);
+    margin-top: 4px;
+  }
+
+  .card-artisan {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .artisan-dot {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .artisan-name { font-size: 0.68rem; color: var(--ink-mid); }
+
+  /* ========= STATES SECTION ========= */
+  section { padding: 6rem 5vw; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 1rem;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--ink-mid);
+    max-width: 560px;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 3rem;
+  }
+
+  /* States Grid */
+  .states-section { background: var(--ink); }
+
+  .states-section .section-label { color: var(--gold); }
+  .states-section .section-title { color: white; }
+  .states-section .section-sub { color: rgba(255,255,255,0.6); }
+
+  .states-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .state-card {
+    background: var(--ink);
+    padding: 2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .state-card:hover { background: var(--ink-mid); }
+
+  .state-emoji { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+
+  .state-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .state-craft {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .state-count {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: rgba(200,154,46,0.15);
+    color: var(--gold);
+    font-size: 0.7rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+  }
+
+  /* ========= HOW IT WORKS ========= */
+  .how-it-works { background: var(--cream-dark); }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .step {
+    position: relative;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--saffron-light);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .step-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .step-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+  }
+
+  .step-desc {
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+
+  /* ========= FEATURED PRODUCTS ========= */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .product-tile {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .product-tile:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(26,18,8,0.12);
+  }
+
+  .product-tile-img {
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    position: relative;
+  }
+
+  .product-tile-badge {
+    position: absolute;
+    top: 1rem; left: 1rem;
+    background: rgba(255,255,255,0.9);
+    color: var(--teal);
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    backdrop-filter: blur(4px);
+  }
+
+  .product-tile-wishlist {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+
+  .product-tile-body {
+    padding: 1.2rem;
+  }
+
+  .product-tile-state {
+    font-size: 0.72rem;
+    color: var(--teal-mid);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+
+  .product-tile-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .product-tile-artisan {
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+    font-weight: 300;
+  }
+
+  .product-tile-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .product-tile-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--saffron);
+  }
+
+  .product-tile-rating {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.78rem;
+    color: var(--ink-mid);
+  }
+
+  .product-tile-rating .star { color: var(--gold); }
+
+  /* ========= ARTISAN SPOTLIGHT ========= */
+  .artisan-section {
+    background: linear-gradient(135deg, var(--teal) 0%, #0D4848 100%);
+    color: white;
+  }
+
+  .artisan-section .section-label { color: var(--teal-light); }
+  .artisan-section .section-title { color: white; }
+  .artisan-section .section-sub { color: rgba(255,255,255,0.65); }
+
+  .artisan-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .artisan-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+
+  .artisan-card:hover { background: rgba(255,255,255,0.14); }
+
+  .artisan-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .artisan-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+  }
+
+  .artisan-card-craft {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 0.5rem;
+  }
+
+  .artisan-card-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255,255,255,0.1);
+    color: var(--teal-light);
+    font-size: 0.72rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    margin-bottom: 1rem;
+  }
+
+  .artisan-card-story {
+    font-size: 0.83rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .artisan-card-stats {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .artisan-stat-num {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    display: block;
+  }
+
+  .artisan-stat-lbl {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ========= LOGISTICS STRIP ========= */
+  .logistics-strip {
+    background: var(--saffron);
+    padding: 2.5rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .logistics-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: white;
+  }
+
+  .logistics-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .logistics-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .logistics-text span {
+    font-size: 0.78rem;
+    opacity: 0.8;
+  }
+
+  /* ========= PAYMENT SECTION ========= */
+  .payment-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .payment-visual {
+    background: var(--cream-dark);
+    border-radius: 24px;
+    padding: 2rem;
+    position: relative;
+  }
+
+  .payment-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 24px rgba(26,18,8,0.08);
+    margin-bottom: 1rem;
+  }
+
+  .payment-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0;
+  }
+
+  .payment-row:not(:last-child) { border-bottom: 1px solid var(--cream-dark); }
+
+  .payment-label { font-size: 0.82rem; color: var(--ink-mid); }
+  .payment-val { font-size: 0.9rem; font-weight: 500; color: var(--ink); }
+  .payment-val.green { color: var(--teal-mid); }
+
+  .upi-badges {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+
+  .upi-badge {
+    background: white;
+    border: 1px solid var(--cream-dark);
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* ========= TESTIMONIALS ========= */
+  .testimonials { background: var(--cream-dark); }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+  }
+
+  .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .testimonial-ava {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .testimonial-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+
+  .testimonial-role {
+    font-size: 0.75rem;
+    color: var(--ink-mid);
+  }
+
+  /* ========= NEWSLETTER ========= */
+  .newsletter {
+    background: var(--ink);
+    text-align: center;
+    padding: 6rem 5vw;
+  }
+
+  .newsletter .section-title { color: white; }
+  .newsletter .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 2.5rem; }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    border-radius: 100px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.07);
+    color: white;
+    font-size: 0.9rem;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: border-color 0.2s;
+  }
+
+  .newsletter-input::placeholder { color: rgba(255,255,255,0.4); }
+  .newsletter-input:focus { border-color: var(--saffron); }
+
+  /* ========= FOOTER ========= */
+  footer {
+    background: var(--ink-mid);
+    padding: 3rem 5vw;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+  }
+
+  .footer-brand .nav-logo { margin-bottom: 1rem; color: white; }
+  .footer-brand p { font-size: 0.83rem; color: rgba(255,255,255,0.5); line-height: 1.7; max-width: 260px; }
+
+  .footer-col-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+  }
+
+  .footer-links { list-style: none; }
+  .footer-links li { margin-bottom: 0.6rem; }
+  .footer-links a {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--saffron); }
+
+  .footer-bottom {
+    background: var(--ink);
+    padding: 1.2rem 5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ========= SEARCH BAR ========= */
+  .search-section {
+    padding: 2rem 5vw 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 100px;
+    padding: 0.6rem 0.6rem 0.6rem 1.5rem;
+    box-shadow: 0 4px 24px rgba(26,18,8,0.10);
+    gap: 1rem;
+    width: 100%;
+    max-width: 680px;
+    border: 1.5px solid transparent;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .search-bar:focus-within {
+    border-color: var(--saffron);
+    box-shadow: 0 4px 32px rgba(224,123,57,0.15);
+  }
+
+  .search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: transparent;
+  }
+
+  .search-bar input::placeholder { color: rgba(26,18,8,0.4); }
+
+  .search-divider { width: 1px; height: 20px; background: var(--cream-dark); }
+
+  .search-select {
+    border: none;
+    outline: none;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--ink-mid);
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .search-btn {
+    background: var(--saffron);
+    border: none;
+    border-radius: 100px;
+    color: white;
+    padding: 0.6rem 1.4rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    font-family: 'DM Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .search-btn:hover { background: var(--saffron-dark); }
+
+  /* ========= RESPONSIVE ========= */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; padding-top: 7rem; }
+    .hero::before { display: none; }
+    .hero-visual { display: none; }
+    .payment-section { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr 1fr; }
+    .hero-stats { gap: 1.5rem; }
+  }
+
+  @media (max-width: 600px) {
+    footer { grid-template-columns: 1fr; }
+    .newsletter-form { flex-direction: column; }
+    .logistics-strip { justify-content: flex-start; }
+  }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: rotate(-5deg) translateY(0); }
+    50% { transform: rotate(-5deg) translateY(-8px); }
+  }
+
+  @keyframes float2 {
+    0%, 100% { transform: rotate(3deg) translateY(0); }
+    50% { transform: rotate(3deg) translateY(-10px); }
+  }
+
+  @keyframes float3 {
+    0%, 100% { transform: rotate(2deg) translateY(0); }
+    50% { transform: rotate(2deg) translateY(-6px); }
+  }
+
+  .product-card:nth-child(1) { animation: float 4s ease-in-out infinite; }
+  .product-card:nth-child(2) { animation: float2 5s ease-in-out infinite 0.5s; }
+  .product-card:nth-child(3) { animation: float3 4.5s ease-in-out infinite 1s; }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#" style="gap:0;">
+    <svg viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg" height="48" width="200" style="display:block;">
+      <!-- Pin circle head -->
+      <circle cx="26" cy="18" r="12" fill="#E07B4A"/>
+      <circle cx="26" cy="18" r="5" fill="#1A1208" opacity="0.92"/>
+      <circle cx="26" cy="18" r="2.2" fill="#E07B4A"/>
+      <!-- Pin neck -->
+      <path d="M 20 27 Q 26 42 26 42 Q 26 42 32 27 Z" fill="#E07B4A"/>
+      <!-- Central lotus petal -->
+      <path d="M 26 42 C 23 47 18 52 17 59 C 18 65 22 68 26 68 C 30 68 34 65 35 59 C 34 52 29 47 26 42 Z" fill="#3DBDBD"/>
+      <!-- Left petal -->
+      <path d="M 24 47 C 19 45 13 46 10 51 C 9 56 11 60 15 61 C 19 62 23 58 23 54 C 24 51 24 49 24 47 Z" fill="#5ECECE" opacity="0.82"/>
+      <!-- Right petal -->
+      <path d="M 28 47 C 33 45 39 46 42 51 C 43 56 41 60 37 61 C 33 62 29 58 29 54 C 28 51 28 49 28 47 Z" fill="#5ECECE" opacity="0.82"/>
+      <!-- Outer left -->
+      <path d="M 22 51 C 17 49 11 50 9 55 C 8 59 10 63 14 63 C 18 63 21 59 21 56 C 22 53 22 52 22 51 Z" fill="#E07B4A" opacity="0.45"/>
+      <!-- Outer right -->
+      <path d="M 30 51 C 35 49 41 50 43 55 C 44 59 42 63 38 63 C 34 63 31 59 31 56 C 30 53 30 52 30 51 Z" fill="#E07B4A" opacity="0.45"/>
+      <!-- Vein -->
+      <line x1="26" y1="44" x2="26" y2="67" stroke="#1A1208" stroke-width="0.6" opacity="0.35"/>
+      <!-- Divider -->
+      <line x1="54" y1="8" x2="54" y2="70" stroke="#FAF6F0" stroke-width="0.6" opacity="0.15"/>
+      <!-- ROUTES -->
+      <text x="62" y="32" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5" fill="#E07B4A">Routes</text>
+      <!-- & roots -->
+      <text x="62" y="44" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="7" letter-spacing="1.5" fill="#5ECECE" opacity="0.7">&amp; roots</text>
+      <!-- ROOTS -->
+      <text x="62" y="66" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="22" fill="#3DBDBD">Roots</text>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#states">By State</a></li>
+    <li><a href="#products">Shop</a></li>
+    <li><a href="#artisans">Artisans</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#" class="nav-cta">Join as Artisan</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">🇮🇳 &nbsp;Supporting Indian Artisans</div>
+    <h1>Carry a Piece of <em>India</em> Home with You</h1>
+    <p class="hero-sub">Discover authentic handcrafted souvenirs from local artisans across every Indian state. Every purchase directly supports the craftsperson who made it.</p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-primary">Explore Collection ↓</a>
+      <a href="#artisans" class="btn-outline">Meet the Artisans</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <span class="hero-stat-num">3,200+</span>
+        <span class="hero-stat-label">Verified Artisans</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">28</span>
+        <span class="hero-stat-label">Indian States</span>
+      </div>
+      <div>
+        <span class="hero-stat-num">95%</span>
+        <span class="hero-stat-label">Revenue to Craftsperson</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-cards-stack">
+      <div class="product-card">
+        <div class="card-img pottery">🏺</div>
+        <div class="card-name">Blue Pottery Vase</div>
+        <div class="card-state">📍 Jaipur, Rajasthan</div>
+        <div class="card-price">₹850</div>
+        <div class="card-artisan">
+          <div class="artisan-dot" style="background: var(--saffron);">RK</div>
+          <span class="artisan-name">Ramesh Kumar</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="card-img textile">🧵</div>
+        <div class="card-name">Kanjivaram Silk Scarf</div>
+        <div class="card-state">📍 Kanchipuram, Tamil Nadu</div>
+        <div class="card-price">₹2,400</div>
+        <div class="card-artisan">
+          <div class="artisan-dot" style="background: var(--teal);">PD</div>
+          <span class="artisan-name">Priya Devi</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="card-img jewelry">💍</div>
+        <div class="card-name">Tribal Silver Earrings</div>
+        <div class="card-state">📍 Bastar, Chhattisgarh</div>
+        <div class="card-price">₹1,100</div>
+        <div class="card-artisan">
+          <div class="artisan-dot" style="background: var(--dusty-rose);">LB</div>
+          <span class="artisan-name">Lata Bai</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-bar">
+    <input type="text" placeholder="Search for Pashmina, Madhubani art, Warli…" />
+    <div class="search-divider"></div>
+    <select class="search-select">
+      <option>All States</option>
+      <option>Rajasthan</option>
+      <option>Kerala</option>
+      <option>West Bengal</option>
+      <option>Gujarat</option>
+      <option>Uttar Pradesh</option>
+      <option>Kashmir</option>
+    </select>
+    <div class="search-divider"></div>
+    <select class="search-select">
+      <option>All Crafts</option>
+      <option>Textiles</option>
+      <option>Pottery</option>
+      <option>Jewelry</option>
+      <option>Paintings</option>
+      <option>Wood Carving</option>
+    </select>
+    <button class="search-btn">Search</button>
+  </div>
+</div>
+
+<!-- STATES -->
+<section class="states-section fade-in" id="states">
+  <div class="section-label">Explore by Region</div>
+  <h2 class="section-title">Shop by Indian State</h2>
+  <p class="section-sub">Every state has a unique craft heritage. Discover the artistry unique to each region.</p>
+  <div class="states-grid">
+    <div class="state-card">
+      <span class="state-count">142 products</span>
+      <span class="state-emoji">🎨</span>
+      <div class="state-name">Rajasthan</div>
+      <div class="state-craft">Blue Pottery, Block Prints, Bandhani, Meenakari Jewelry</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">98 products</span>
+      <span class="state-emoji">🧶</span>
+      <div class="state-name">Kashmir</div>
+      <div class="state-craft">Pashmina Shawls, Papier-mâché, Walnut Wood Carving</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">119 products</span>
+      <span class="state-emoji">🪔</span>
+      <div class="state-name">Uttar Pradesh</div>
+      <div class="state-craft">Chikankari, Zardozi, Brassware, Varanasi Silk</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">87 products</span>
+      <span class="state-emoji">🌴</span>
+      <div class="state-name">Kerala</div>
+      <div class="state-craft">Coir Products, Mural Paintings, Aranmula Metal Mirror</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">74 products</span>
+      <span class="state-emoji">🖼️</span>
+      <div class="state-name">West Bengal</div>
+      <div class="state-craft">Baluchari Sarees, Kantha Embroidery, Terracotta</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">103 products</span>
+      <span class="state-emoji">🌺</span>
+      <div class="state-name">Gujarat</div>
+      <div class="state-craft">Patola Silk, Kutch Embroidery, Rogan Art, Bandhani</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">61 products</span>
+      <span class="state-emoji">🎭</span>
+      <div class="state-name">Bihar</div>
+      <div class="state-craft">Madhubani Painting, Tikuli Art, Sujni Embroidery</div>
+    </div>
+    <div class="state-card">
+      <span class="state-count">79 products</span>
+      <span class="state-emoji">🛕</span>
+      <div class="state-name">Tamil Nadu</div>
+      <div class="state-craft">Kanjivaram Silk, Bronze Casting, Tanjore Paintings</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works fade-in" id="how">
+  <div class="section-label">The Journey</div>
+  <h2 class="section-title">From Artisan's Hands to Yours</h2>
+  <p class="section-sub">A seamless journey that keeps the artisan at the centre of every transaction.</p>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <span class="step-icon">🔍</span>
+      <div class="step-title">Discover & Browse</div>
+      <p class="step-desc">Search by state, craft type, or artisan. Each listing shows the maker's story, their village, and the tradition behind the craft.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <span class="step-icon">🛒</span>
+      <div class="step-title">Order & Customise</div>
+      <p class="step-desc">Add to cart and request personalisation — name engravings, custom colours, or bespoke sizing. Artisans confirm within 24 hours.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <span class="step-icon">💳</span>
+      <div class="step-title">Pay Securely</div>
+      <p class="step-desc">UPI, cards, net banking, or EMI. 95% of the sale price flows directly to the artisan within 48 hours via Razorpay.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <span class="step-icon">📦</span>
+      <div class="step-title">Tracked Delivery</div>
+      <p class="step-desc">Shipped via our logistics partners — Delhivery, DTDC, or India Post — with real-time tracking. Eco-friendly packaging.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products" class="fade-in">
+  <div class="section-label">Curated for You</div>
+  <h2 class="section-title">Trending This Season</h2>
+  <p class="section-sub">Handpicked pieces that tell the most beautiful stories of Indian craftsmanship.</p>
+  <div class="products-grid">
+
+    <div class="product-tile">
+      <div class="product-tile-img" style="background: #FFF0E0;">🏺
+        <div class="product-tile-badge">Rajasthan</div>
+        <div class="product-tile-wishlist">🤍</div>
+      </div>
+      <div class="product-tile-body">
+        <div class="product-tile-state">Jaipur</div>
+        <div class="product-tile-name">Hand-painted Blue Pottery Lamp</div>
+        <div class="product-tile-artisan">by Mohammad Salim · 22 yrs experience</div>
+        <div class="product-tile-footer">
+          <div class="product-tile-price">₹1,650</div>
+          <div class="product-tile-rating"><span class="star">★</span> 4.9 (128)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-tile">
+      <div class="product-tile-img" style="background: #E8F5F0;">🧵
+        <div class="product-tile-badge">Kashmir</div>
+        <div class="product-tile-wishlist">🤍</div>
+      </div>
+      <div class="product-tile-body">
+        <div class="product-tile-state">Srinagar</div>
+        <div class="product-tile-name">Pure Pashmina Embroidered Shawl</div>
+        <div class="product-tile-artisan">by Fatima Begum · GI Tagged</div>
+        <div class="product-tile-footer">
+          <div class="product-tile-price">₹8,900</div>
+          <div class="product-tile-rating"><span class="star">★</span> 5.0 (76)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-tile">
+      <div class="product-tile-img" style="background: #FFF5E8;">🎨
+        <div class="product-tile-badge">Bihar</div>
+        <div class="product-tile-wishlist">🤍</div>
+      </div>
+      <div class="product-tile-body">
+        <div class="product-tile-state">Madhubani</div>
+        <div class="product-tile-name">Madhubani Canvas — Tree of Life</div>
+        <div class="product-tile-artisan">by Sita Devi · National Award Winner</div>
+        <div class="product-tile-footer">
+          <div class="product-tile-price">₹4,200</div>
+          <div class="product-tile-rating"><span class="star">★</span> 4.8 (201)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-tile">
+      <div class="product-tile-img" style="background: #F0EAF8;">🪵
+        <div class="product-tile-badge">Gujarat</div>
+        <div class="product-tile-wishlist">🤍</div>
+      </div>
+      <div class="product-tile-body">
+        <div class="product-tile-state">Kutch</div>
+        <div class="product-tile-name">Kutch Mirror Embroidery Cushion Cover</div>
+        <div class="product-tile-artisan">by Razia Khanum · Women's Cooperative</div>
+        <div class="product-tile-footer">
+          <div class="product-tile-price">₹960</div>
+          <div class="product-tile-rating"><span class="star">★</span> 4.7 (89)</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center; margin-top: 3rem;">
+    <a href="#" class="btn-outline">View All 2,800+ Products →</a>
+  </div>
+</section>
+
+<!-- LOGISTICS STRIP -->
+<div class="logistics-strip">
+  <div class="logistics-item">
+    <div class="logistics-icon">🚚</div>
+    <div class="logistics-text">
+      <strong>Pan-India Delivery</strong>
+      <span>Delhivery · DTDC · India Post</span>
+    </div>
+  </div>
+  <div class="logistics-item">
+    <div class="logistics-icon">🌍</div>
+    <div class="logistics-text">
+      <strong>International Shipping</strong>
+      <span>60+ countries via DHL & FedEx</span>
+    </div>
+  </div>
+  <div class="logistics-item">
+    <div class="logistics-icon">📦</div>
+    <div class="logistics-text">
+      <strong>Eco Packaging</strong>
+      <span>100% biodegradable materials</span>
+    </div>
+  </div>
+  <div class="logistics-item">
+    <div class="logistics-icon">🔄</div>
+    <div class="logistics-text">
+      <strong>Easy Returns</strong>
+      <span>15-day hassle-free return policy</span>
+    </div>
+  </div>
+</div>
+
+<!-- ARTISANS -->
+<section class="artisan-section fade-in" id="artisans">
+  <div class="section-label">The Makers</div>
+  <h2 class="section-title">Behind Every Piece, a Life's Work</h2>
+  <p class="section-sub">Meet the artisans keeping centuries-old traditions alive — and building a sustainable income through your purchases.</p>
+  <div class="artisan-grid">
+    <div class="artisan-card">
+      <div class="artisan-avatar" style="background: rgba(224,123,57,0.15); font-size: 1.8rem;">👨‍🎨</div>
+      <div class="artisan-card-name">Mohammad Salim</div>
+      <div class="artisan-card-craft">Blue Pottery Master · 4th Generation</div>
+      <div class="artisan-card-state">📍 Jaipur, Rajasthan</div>
+      <p class="artisan-card-story">"My great-grandfather learned the craft from Persian traders. Today I teach my son the same strokes — but now the whole world can see our work."</p>
+      <div class="artisan-card-stats">
+        <div>
+          <span class="artisan-stat-num">847</span>
+          <span class="artisan-stat-lbl">Items sold</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">4.9★</span>
+          <span class="artisan-stat-lbl">Rating</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">₹3.2L</span>
+          <span class="artisan-stat-lbl">Earned</span>
+        </div>
+      </div>
+    </div>
+    <div class="artisan-card">
+      <div class="artisan-avatar" style="background: rgba(29,106,106,0.2); font-size: 1.8rem;">👩‍🎨</div>
+      <div class="artisan-card-name">Fatima Begum</div>
+      <div class="artisan-card-craft">Pashmina Weaver · GI Certified</div>
+      <div class="artisan-card-state">📍 Srinagar, Kashmir</div>
+      <p class="artisan-card-story">"I weave 12 hours a day. One shawl takes three months. Through this platform, travelers in Tokyo wear my work — that feeling is beyond words."</p>
+      <div class="artisan-card-stats">
+        <div>
+          <span class="artisan-stat-num">203</span>
+          <span class="artisan-stat-lbl">Items sold</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">5.0★</span>
+          <span class="artisan-stat-lbl">Rating</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">₹18L</span>
+          <span class="artisan-stat-lbl">Earned</span>
+        </div>
+      </div>
+    </div>
+    <div class="artisan-card">
+      <div class="artisan-avatar" style="background: rgba(200,154,46,0.15); font-size: 1.8rem;">👩‍🎨</div>
+      <div class="artisan-card-name">Sita Devi</div>
+      <div class="artisan-card-craft">Madhubani Artist · National Awardee</div>
+      <div class="artisan-card-state">📍 Madhubani, Bihar</div>
+      <p class="artisan-card-story">"Our mothers drew these on mud walls. Now mine hang in homes across fifteen countries. Vocal for Local gave us a wall the whole world can see."</p>
+      <div class="artisan-card-stats">
+        <div>
+          <span class="artisan-stat-num">619</span>
+          <span class="artisan-stat-lbl">Items sold</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">4.8★</span>
+          <span class="artisan-stat-lbl">Rating</span>
+        </div>
+        <div>
+          <span class="artisan-stat-num">₹9.4L</span>
+          <span class="artisan-stat-lbl">Earned</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAYMENTS -->
+<section id="payments" class="fade-in" style="background: var(--cream);">
+  <div class="payment-section">
+    <div>
+      <div class="section-label">Digital Payments</div>
+      <h2 class="section-title">Pay Your Way, Anywhere</h2>
+      <p class="section-sub">Whether you're at the airport or back home, complete your purchase with India's most trusted payment methods. Every rupee reaches the artisan fast.</p>
+      <ul style="list-style:none; display:flex; flex-direction:column; gap:1rem;">
+        <li style="display:flex; gap:12px; align-items:flex-start;">
+          <span style="font-size:1.3rem;">📱</span>
+          <div>
+            <strong style="font-size:0.9rem; display:block; margin-bottom:2px;">UPI Instant</strong>
+            <span style="font-size:0.82rem; color:var(--ink-mid);">GPay, PhonePe, Paytm — zero charges, instant settlement to artisan</span>
+          </div>
+        </li>
+        <li style="display:flex; gap:12px; align-items:flex-start;">
+          <span style="font-size:1.3rem;">💳</span>
+          <div>
+            <strong style="font-size:0.9rem; display:block; margin-bottom:2px;">Cards & International</strong>
+            <span style="font-size:0.82rem; color:var(--ink-mid);">All Visa, Mastercard, Amex. Currency auto-converted for travellers</span>
+          </div>
+        </li>
+        <li style="display:flex; gap:12px; align-items:flex-start;">
+          <span style="font-size:1.3rem;">📅</span>
+          <div>
+            <strong style="font-size:0.9rem; display:block; margin-bottom:2px;">No-Cost EMI</strong>
+            <span style="font-size:0.82rem; color:var(--ink-mid);">Split big purchases across 3–12 months with HDFC, ICICI, Axis</span>
+          </div>
+        </li>
+        <li style="display:flex; gap:12px; align-items:flex-start;">
+          <span style="font-size:1.3rem;">🔒</span>
+          <div>
+            <strong style="font-size:0.9rem; display:block; margin-bottom:2px;">100% Escrow Protection</strong>
+            <span style="font-size:0.82rem; color:var(--ink-mid);">Powered by Razorpay. Money released only after delivery confirmation</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="payment-visual">
+      <div style="font-size:0.78rem; font-weight:500; color:var(--ink-mid); margin-bottom:0.75rem;">Order Summary</div>
+      <div class="payment-card">
+        <div class="payment-row">
+          <span class="payment-label">🏺 Blue Pottery Lamp</span>
+          <span class="payment-val">₹1,650</span>
+        </div>
+        <div class="payment-row">
+          <span class="payment-label">🧵 Pashmina Scarf</span>
+          <span class="payment-val">₹2,400</span>
+        </div>
+        <div class="payment-row">
+          <span class="payment-label">Shipping (Delhivery)</span>
+          <span class="payment-val green">FREE</span>
+        </div>
+        <div class="payment-row">
+          <span class="payment-label" style="font-weight:500; color:var(--ink);">Total</span>
+          <span class="payment-val" style="font-weight:700; color:var(--saffron); font-size:1rem;">₹4,050</span>
+        </div>
+      </div>
+      <div style="font-size:0.78rem; font-weight:500; color:var(--ink-mid); margin-bottom:0.6rem;">Pay with</div>
+      <div class="upi-badges">
+        <div class="upi-badge">📱 GPay</div>
+        <div class="upi-badge">📱 PhonePe</div>
+        <div class="upi-badge">💳 Card</div>
+        <div class="upi-badge">🏦 Net Banking</div>
+        <div class="upi-badge">📅 EMI</div>
+      </div>
+      <button class="btn-primary" style="width:100%; justify-content:center; margin-top:1.2rem;">Pay ₹4,050 Now 🔒</button>
+      <p style="font-size:0.7rem; color:var(--ink-mid); text-align:center; margin-top:0.75rem;">Secured by Razorpay · 256-bit SSL</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials fade-in">
+  <div class="section-label">Stories</div>
+  <h2 class="section-title">What Travellers Say</h2>
+  <p class="section-sub">From Udaipur to Edinburgh, our community shares their Vocal for Local moments.</p>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"I was in Jaipur for three days and spotted this platform at the airport. Bought a Madhubani painting for my daughter's room — it arrived in Germany perfectly wrapped, with a handwritten note from Sita Devi herself."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-ava" style="background: #FFF0E0;">🧳</div>
+        <div>
+          <span class="testimonial-name">Markus Hoffmann</span>
+          <span class="testimonial-role">Traveller from Munich · Bought Madhubani Art</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"Being from Chennai, I always wanted to gift proper Kanjivaram silk to friends abroad. Finally a platform that verifies the GI tag and ships internationally. Worth every rupee."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-ava" style="background: #E8F5F0;">🌺</div>
+        <div>
+          <span class="testimonial-name">Ananya Krishnaswamy</span>
+          <span class="testimonial-role">NRI in Singapore · Repeat Customer</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-quote">"As a travel blogger I've covered 22 Indian states. Vocal for Local is the only place I trust for authentic, ethically sourced crafts. The artisan transparency is unmatched."</p>
+      <div class="testimonial-author">
+        <div class="testimonial-ava" style="background: #F5E8D0;">✍️</div>
+        <div>
+          <span class="testimonial-name">Rohan Mehta</span>
+          <span class="testimonial-role">Travel Blogger · 340K followers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="section-label" style="color:var(--gold);">Stay in the Loop</div>
+  <h2 class="section-title">Discover New Artisans Every Week</h2>
+  <p class="section-sub">Get stories from craft villages, new collection drops, and exclusive travel + shopping guides.</p>
+  <div class="newsletter-form">
+    <input class="newsletter-input" type="email" placeholder="your@email.com" />
+    <button class="btn-primary">Subscribe</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <a href="#" style="display:inline-block; margin-bottom:1rem; text-decoration:none;">
+      <svg viewBox="0 0 300 72" xmlns="http://www.w3.org/2000/svg" height="48" width="200" style="display:block;">
+        <circle cx="26" cy="18" r="12" fill="#E07B4A"/>
+        <circle cx="26" cy="18" r="5" fill="#1A1208" opacity="0.92"/>
+        <circle cx="26" cy="18" r="2.2" fill="#E07B4A"/>
+        <path d="M 20 27 Q 26 42 26 42 Q 26 42 32 27 Z" fill="#E07B4A"/>
+        <path d="M 26 42 C 23 47 18 52 17 59 C 18 65 22 68 26 68 C 30 68 34 65 35 59 C 34 52 29 47 26 42 Z" fill="#3DBDBD"/>
+        <path d="M 24 47 C 19 45 13 46 10 51 C 9 56 11 60 15 61 C 19 62 23 58 23 54 C 24 51 24 49 24 47 Z" fill="#5ECECE" opacity="0.82"/>
+        <path d="M 28 47 C 33 45 39 46 42 51 C 43 56 41 60 37 61 C 33 62 29 58 29 54 C 28 51 28 49 28 47 Z" fill="#5ECECE" opacity="0.82"/>
+        <path d="M 22 51 C 17 49 11 50 9 55 C 8 59 10 63 14 63 C 18 63 21 59 21 56 C 22 53 22 52 22 51 Z" fill="#E07B4A" opacity="0.45"/>
+        <path d="M 30 51 C 35 49 41 50 43 55 C 44 59 42 63 38 63 C 34 63 31 59 31 56 C 30 53 30 52 30 51 Z" fill="#E07B4A" opacity="0.45"/>
+        <line x1="26" y1="44" x2="26" y2="67" stroke="#1A1208" stroke-width="0.6" opacity="0.3"/>
+        <line x1="54" y1="8" x2="54" y2="70" stroke="#FAF6F0" stroke-width="0.6" opacity="0.12"/>
+        <text x="62" y="32" font-family="Montserrat, sans-serif" font-weight="800" font-size="22" letter-spacing="-0.5" fill="#E07B4A">Routes</text>
+        <text x="62" y="44" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="7" letter-spacing="1.5" fill="#5ECECE" opacity="0.7">&amp; roots</text>
+        <text x="62" y="66" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="22" fill="#3DBDBD">Roots</text>
+      </svg>
+    </a>
+    <p>Connecting India's craftspeople with the world's travellers. Every purchase preserves a tradition and empowers a family.</p>
+  </div>
+  <div>
+    <div class="footer-col-title">Shop</div>
+    <ul class="footer-links">
+      <li><a href="#">Browse by State</a></li>
+      <li><a href="#">Browse by Craft</a></li>
+      <li><a href="#">New Arrivals</a></li>
+      <li><a href="#">GI Tagged Items</a></li>
+      <li><a href="#">Gift Cards</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Artisans</div>
+    <ul class="footer-links">
+      <li><a href="#">Join as Artisan</a></li>
+      <li><a href="#">Artisan Stories</a></li>
+      <li><a href="#">Training & Support</a></li>
+      <li><a href="#">GI Certification Help</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Support</div>
+    <ul class="footer-links">
+      <li><a href="#">Track Order</a></li>
+      <li><a href="#">Returns & Refunds</a></li>
+      <li><a href="#">Payment Help</a></li>
+      <li><a href="#">Contact Us</a></li>
+      <li><a href="#">FAQs</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Roots &amp; Routes Marketplace Pvt. Ltd. All rights reserved.</span>
+  <span>Made with 🧡 for Indian Artisans · Privacy · Terms</span>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
